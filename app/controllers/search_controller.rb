@@ -6,11 +6,11 @@ class SearchController < ApplicationController
       faraday.adapter Faraday.default_adapter
     end
 
-    response = conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zip}")
+    response = conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zip}&radius=6.0")
     results = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
-    @stations = results.map do |result|
+    @stations = results[:fuel_stations].map do |result|
       Station.new(result)
     end
+    binding.pry
   end
 end
