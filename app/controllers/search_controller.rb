@@ -8,8 +8,13 @@ class SearchController < ApplicationController
 
     response = conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zip}&radius=6.0")
     results = JSON.parse(response.body, symbolize_names: true)
-    @stations = results[:fuel_stations].map do |result|
+    stations = results[:fuel_stations].map do |result|
       Station.new(result)
     end
+  binding.pry
+    @sorted_stations = stations.sort_by { |station| station.distance }.first(10)
+
+
+
   end
 end

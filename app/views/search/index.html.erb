@@ -1,5 +1,5 @@
-
-<% @stations.each do |station| %>
+<%= @sorted_stations.count %> Results
+<% @sorted_stations.each do |station| %>
   <ul>
     <li>  <%= station.name %> </li>
     <li>  <%= station.street_address %> </li>
