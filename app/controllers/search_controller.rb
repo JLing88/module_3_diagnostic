@@ -1,17 +1,16 @@
 class SearchController < ApplicationController
   def index
     zip = params[:q]
-    @conn = Faraday.new(url: "https://developer.nrel.gov/") do |faraday|
-      faraday.headers["api_key"] = ENV["api_key"]
+    conn = Faraday.new(url: "https://developer.nrel.gov/") do |faraday|
+      faraday.headers["X-API-KEY"] = ENV["api_key"]
       faraday.adapter Faraday.default_adapter
-      binding.pry
     end
 
-    response = @conn.get("/api/alt-fuel-stations/v1/nearest.json")
-    results = JSON.parse(response.body, symbolize_names: true)[:results]
-    
+    response = conn.get("/api/alt-fuel-stations/v1/nearest.json?location=#{zip}")
+    results = JSON.parse(response.body, symbolize_names: true)
+    binding.pry
     @stations = results.map do |result|
-      Member.new(result)
+      Station.new(result)
     end
   end
 end
