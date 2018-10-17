@@ -11,10 +11,14 @@ describe 'As a visitor' do
       # And I click "Locate"
       click_on "Locate"
       # Then I should be on page "/search"
-      save_and_open_page
 
       expect(current_path).to eq("/search")
       expect(page).to have_content("10 Results")
+      expect(page).to have_content("UDR")
+      expect(page).to have_content("800 Acoma St")
+      expect(page).to have_content("ELEC")
+      expect(page).to have_content("24 hours daily")
+
       # Then I should see a list of the 10 closest stations within 6 miles sorted by distance
       # And the stations should be limited to Electric and Propane
       # And for each of the stations I should see Name, Address, Fuel Types, Distance, and Access Times
