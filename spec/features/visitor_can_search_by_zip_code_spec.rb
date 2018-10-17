@@ -14,7 +14,7 @@ describe 'As a visitor' do
       expect(current_path).to eq("/search")
       expect(page).to have_content("10 Results")
       expect(page).to have_content("UDR")
-      expect(page).to have_content("800 Acoma St")
+      expect(page).to have_content("800 Acoma St Denver, CO 80204")
       expect(page).to have_content("ELEC")
       expect(page).to have_content("24 hours daily")
       # Then I should see a list of the 10 closest stations within 6 miles sorted by distance

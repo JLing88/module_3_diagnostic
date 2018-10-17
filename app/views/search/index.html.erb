@@ -2,9 +2,9 @@
 <% @sorted_stations.each do |station| %>
   <ul>
     <li>  <%= station.name %> </li>
-    <li>  <%= station.street_address %> </li>
+    <li>  <%= station.street_address %> <%= station.city %>, <%= station.state %> <%= station.zip %> </li>
     <li>  <%= station.fuel_type %> </li>
-    <li>  <%= station.distance %> </li>
+    <li>  <%= station.distance %> miles </li>
     <li>  <%= station.access_days_time %> </li>
   </ul>
 <% end %>
