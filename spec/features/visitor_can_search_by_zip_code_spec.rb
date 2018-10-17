@@ -11,6 +11,8 @@ describe 'As a visitor' do
       # And I click "Locate"
       click_on "Locate"
       # Then I should be on page "/search"
+      save_and_open_page
+
       expect(current_path).to eq("/search")
       expect(page).to have_content("10 Results")
       # Then I should see a list of the 10 closest stations within 6 miles sorted by distance

@@ -1,13 +1,10 @@
-<% @station_search.stations.each do |station| %>
+
+<% @stations.each do |station| %>
   <ul>
     <li>  <%= station.name %> </li>
-    <li>  <%= station.address %> </li>
-    <% stationfuel_types.each do |fuel_type| %>
-      <ul>
-        <li> fuel_type.name </li>
-      </ul>
-    <% end %>
+    <li>  <%= station.street_address %> </li>
+    <li>  <%= station.fuel_type %> </li>
     <li>  <%= station.distance %> </li>
-    <li>  <%= station.access_times %> </li>
+    <li>  <%= station.access_days_time %> </li>
   </ul>
 <% end %>
