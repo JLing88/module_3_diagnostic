@@ -11,7 +11,6 @@ class SearchController < ApplicationController
     stations = results[:fuel_stations].map do |result|
       Station.new(result)
     end
-  binding.pry
     @sorted_stations = stations.sort_by { |station| station.distance }.first(10)
 
 
